@@ -2,10 +2,10 @@ c=0
 f=open("1.txt", "r")
 for i in f:
     s=i[-5:-1]
-    family=i[0:10]
+    L=i.split()
     if int(s) < 1978:
         c +=1
-        print(family)
+        print(L[0])
 f.close()
 a = int(input())
 b = int(input())
