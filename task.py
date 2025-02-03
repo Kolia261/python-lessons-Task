@@ -1,19 +1,27 @@
-c=0
-f=open("1.txt", "r")
-for i in f:
-    s=i[-5:-1]
-    L=i.split()
-    if int(s) < 1978:
-        c +=1
-        print(L[0])
-f.close()
-a = int(input())
-b = int(input())
-f=open("1.txt", "r")
-for i in f:
-    s=i[-5:-1]
-    inf=i
-    if int(s) < b and int(s) > a:
-        print(inf)
-f.close()
+from math import *
+
+class MyCustomException(Exception):
+    pass
+
+def decorator(uscorenie):
+    def obertka(v_start, v_end, t):
+        a = (v_start - v_end) // t
+        s = (v_end * t) + (a*pow(t, 2)/2)
+        try:
+            uscorenie(int(input()), int(input()), int(input()))
+        except (MyCustomException, ValueError):
+            print("Данные должны быть числами!!")
+            print(f"Возникла ошибка: {e}")
+        print(s)
+    return obertka
+
+@decorator
+def uscorenie(v_start, v_end, t):
+    if t == 0:
+        raise MyCustomException("t не может быть равно 0")
+    a = (v_start - v_end) // t
+    print(a)
+
+print(uscorenie(int(input()), int(input()), int(input())))
+
 
